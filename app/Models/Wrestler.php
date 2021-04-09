@@ -19,7 +19,11 @@ class Wrestler extends Model
     {
         $sortedStates = $this->states->sortBy(function ($state) {
             return $state->start;
-        });
+        })->reverse();
+
+        if ($sortedStates->count() === 0) {
+            return [];
+        }
 
         return $sortedStates->first();
     }

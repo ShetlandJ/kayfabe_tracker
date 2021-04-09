@@ -19,9 +19,10 @@ class WrestlerResource extends BaseResource
             'active' => $wrestler->active,
             'date_of_birth' => $wrestler->date_of_birth,
             'date_of_death' => $wrestler->date_of_death,
+            'states' => [],
         ];
 
-        if ($wrestler->states) {
+        if ($wrestler->mostRecentState) {
             $payload['states'][] = WrestlerStateResource::create($wrestler->mostRecentState);
         }
 

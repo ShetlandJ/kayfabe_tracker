@@ -11,4 +11,9 @@ class WrestlerService
     {
         return Wrestler::all();
     }
+
+    public function getBySlug(string $slug): Wrestler
+    {
+        return Wrestler::where('slug', $slug)->first();
+    }
 }

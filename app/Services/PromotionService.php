@@ -26,4 +26,9 @@ class PromotionService
     {
         return Promotion::all();
     }
+
+    public function getByAlias(string $alias)
+    {
+        return Promotion::where('alias', $alias)->first();
+    }
 }
