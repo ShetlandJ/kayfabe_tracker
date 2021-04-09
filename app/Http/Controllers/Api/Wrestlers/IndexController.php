@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class IndexController extends WrestlersController
 {
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke()
     {
         $wrestlers = $this->wrestlerService->getAllWrestlers();
 
