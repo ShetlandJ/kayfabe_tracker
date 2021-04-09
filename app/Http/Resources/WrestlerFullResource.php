@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Resources\WrestlerStateResource;
 
-class WrestlerResource extends BaseResource
+class WrestlerFullResource extends BaseResource
 {
     public function buildResource(Model $wrestler, bool $withExtras = false): array
     {
@@ -22,7 +21,9 @@ class WrestlerResource extends BaseResource
         ];
 
         if ($wrestler->states) {
-            $payload['states'][] = WrestlerStateResource::create($wrestler->mostRecentState);
+            foreach ($wrestler->states as $state) {
+                $payload['states'][] = WrestlerStateResource::create($state);
+            }
         }
 
         return $payload;

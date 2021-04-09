@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PromotionResource extends BaseResource
 {
-    public function buildResource(Model $promotion): array
+    public function buildResource(Model $promotion, bool $withWrestlers = false): array
     {
         $payload = [
             'id' => $promotion->uuid,
@@ -17,6 +17,12 @@ class PromotionResource extends BaseResource
             'founded' => $promotion->founded,
             'active' => $promotion->active,
         ];
+
+        if ($withWrestlers) {
+            foreach ($promotion->wrestlers as $wrestler) {
+                $payload['wrestlers'][] = WrestlerResource::create($wrestler);
+            }
+        }
 
         return $payload;
     }
