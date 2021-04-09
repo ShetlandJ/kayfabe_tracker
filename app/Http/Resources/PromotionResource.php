@@ -8,7 +8,7 @@ class PromotionResource extends BaseResource
 {
     public function buildResource(Model $promotion): array
     {
-        return [
+        $payload = [
             'id' => $promotion->uuid,
             'name' => $promotion->name,
             'description' => $promotion->description,
@@ -17,5 +17,7 @@ class PromotionResource extends BaseResource
             'founded' => $promotion->founded,
             'active' => $promotion->active,
         ];
+
+        return $payload;
     }
 }
