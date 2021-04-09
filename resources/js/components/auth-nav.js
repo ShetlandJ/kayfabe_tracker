@@ -27,7 +27,7 @@ function AuthNav () {
               <NavLink
                 to="/home"
                 activeClassName="font-bold"
-                className="text-gray-800 no-underline text-indigo">Laravel React SPA
+                className="text-gray-800 no-underline text-indigo">Kayfabe Tracker
               </NavLink>
             </li>
           </ul>

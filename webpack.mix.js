@@ -17,6 +17,12 @@ mix.react('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
   .purgeCss()
   .tailwind('tailwind.config.js')
+  .options({
+    hmrOptions: {
+      host: 'localhost',
+      port: 8040
+    }
+  })
   .webpackConfig({
     externals: [
       'child_process'
