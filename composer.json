@@ -16,6 +16,8 @@
         "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "nyholm/psr7": "^1.4",
+        "symfony/psr-http-message-bridge": "^2.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

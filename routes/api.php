@@ -23,6 +23,10 @@ Route::name('api.')->namespace('Api')->group(function () {
             Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
             Route::post('password/reset', 'ResetPasswordController@reset');
         });
+
+        Route::namespace('Wrestlers')->prefix('wrestlers')->group(function () {
+            Route::get('/', 'IndexController')->name('wrestlers.index');
+        });
     });
 
     // Protected routes
@@ -31,5 +35,6 @@ Route::name('api.')->namespace('Api')->group(function () {
             Route::get('me', 'MeController@me')->name('me');
             Route::post('logout', 'LogoutController@logout')->name('logout');
         });
+
     });
 });
