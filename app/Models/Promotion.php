@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Wrestler;
-use App\Models\WrestlersToPromotions;
 use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
@@ -11,7 +9,7 @@ class Promotion extends Model
     protected $table = 'wrestling_promotions';
 
     protected $casts = [
-        "active" => 'boolean',
+        'active' => 'boolean',
     ];
 
     public function wrestlers()
@@ -26,4 +24,3 @@ class Promotion extends Model
         );
     }
 }
-

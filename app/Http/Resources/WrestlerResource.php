@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Resources\WrestlerStateResource;
 
 class WrestlerResource extends BaseResource
 {

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\State;
-use App\Models\WrestlersToStates;
 use Illuminate\Database\Eloquent\Model;
 
 class Wrestler extends Model
@@ -21,7 +19,7 @@ class Wrestler extends Model
             return $state->start;
         })->reverse();
 
-        if ($sortedStates->count() === 0) {
+        if (0 === $sortedStates->count()) {
             return [];
         }
 

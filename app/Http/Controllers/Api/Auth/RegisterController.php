@@ -14,7 +14,7 @@ class RegisterController extends Controller
         $this->validate($request, [
             'email' => 'email|required|unique:users,email',
             'name' => 'required|string|min:4|max:255',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
@@ -23,7 +23,7 @@ class RegisterController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        if (!$token = auth()->attempt($request->only(['email', 'password']))) {
+        if ( ! $token = auth()->attempt($request->only(['email', 'password']))) {
             return abort(401);
         }
 

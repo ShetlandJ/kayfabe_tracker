@@ -10,7 +10,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     protected function toJson($message, $status = Response::HTTP_OK, array $headers = [], $disable_numeric_check = false)
     {
@@ -23,5 +25,4 @@ class Controller extends BaseController
 
         return response()->json($message, $status, $headers, $options);
     }
-
 }

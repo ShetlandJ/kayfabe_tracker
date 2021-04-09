@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Promotions;
 
 use App\Services\PromotionService;
 use App\Http\Controllers\Controller;
-use App\Services\WrestlerService;
 
 abstract class PromotionsController extends Controller
 {

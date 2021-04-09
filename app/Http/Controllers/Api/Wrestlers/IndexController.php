@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api\Wrestlers;
 
 use App\Http\Resources\WrestlerResource;
-use App\Models\Wrestler;
-use Psr\Http\Message\ServerRequestInterface;
 
 class IndexController extends WrestlersController
 {

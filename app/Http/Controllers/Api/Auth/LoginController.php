@@ -15,19 +15,19 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (!$token = auth()->attempt($request->only(['email', 'password']))) {
+        if ( ! $token = auth()->attempt($request->only(['email', 'password']))) {
             return response()->json([
                 'errors' => [
-                    'email' => ['Sorry we couldn\'t sign you in with those details.']
-                ]
+                    'email' => ['Sorry we couldn\'t sign you in with those details.'],
+                ],
             ], 422);
         }
 
         return (new UserResource($request->user()))
             ->additional([
                 'meta' => [
-                    'token' => $token
-                ]
+                    'token' => $token,
+                ],
             ]);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseResource

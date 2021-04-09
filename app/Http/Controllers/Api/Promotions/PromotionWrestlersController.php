@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Promotions;
 
 use App\Http\Resources\PromotionResource;
-use App\Http\Resources\WrestlerFullResource;
 use App\Http\Resources\WrestlerResource;
 
 class PromotionWrestlersController extends PromotionsController
