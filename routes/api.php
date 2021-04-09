@@ -27,6 +27,10 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::namespace('Wrestlers')->prefix('wrestlers')->group(function () {
             Route::get('/', 'IndexController')->name('wrestlers.index');
         });
+
+        Route::namespace('Promotions')->prefix('promotions')->group(function () {
+            Route::get('/', 'IndexController')->name('promotions.index');
+        });
     });
 
     // Protected routes
