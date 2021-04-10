@@ -12,5 +12,5 @@
 */
 
 Route::get('/{uri?}', function () {
-    return view('welcome');
+    return view('promotions-home');
 })->where('uri', '(.*)');

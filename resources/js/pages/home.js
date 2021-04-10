@@ -6,7 +6,7 @@ function Home () {
 
   return (
     <div className="container p-2 mx-auto flex flex-col">
-      <h1>d {currentUser.name}</h1>
+      <h1>Hello stackoverflow {currentUser.name}</h1>
     </div>
   );
 }
