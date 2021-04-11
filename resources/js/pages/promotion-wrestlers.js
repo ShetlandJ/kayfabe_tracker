@@ -39,7 +39,9 @@ function PromotionWrestlers () {
             <span className="rounded-full bg-green-50 w-10 h-10 p-2 items-center justify-center mr-2">
               {getInitials(wrestler.ring_name)}
             </span>
-            {wrestler.ring_name}
+            <span className="dark:text-gray-200">
+              {wrestler.ring_name}
+            </span>
           </div>
         </div>
       </td>
@@ -57,11 +59,12 @@ function PromotionWrestlers () {
         )}
       </td>
       <td className="py-3 px-2 text-center">
-        <div className="flex item-center justify-center">
-          <div className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-            View
-          </div>
-        </div>
+        <button className="p-2 my-2 bg-gray-500 text-white rounded-md">
+          <Link to={`/promotion/${alias}`}>
+            <span className="flex">View <span className="ml-1 hidden md:block">Wrestlers</span></span>
+          </Link>
+        </button>
+
       </td>
     </tr>
 
@@ -74,7 +77,7 @@ function PromotionWrestlers () {
       <div className="flex justify-center">
         <table className="w-5/6 mx-4 my-4 table-auto">
           <thead>
-            <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <tr className="bg-gray-200 text-gray-600 dark:bg-gray-800 dark:text-gray-200 uppercase text-sm leading-normal">
               <th className="py-3 px-2 text-left">Wrestler</th>
               <th className="py-3 px-2 text-center">Status</th>
               <th className="py-3 px-2 text-center" />
