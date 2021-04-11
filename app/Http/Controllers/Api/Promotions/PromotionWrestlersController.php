@@ -20,8 +20,6 @@ class PromotionWrestlersController extends PromotionsController
             $payload['wrestlers'][] = WrestlerResource::create($wrestler);
         }
 
-        dd($payload);
-
         return $this->toJson($payload);
     }
 }
