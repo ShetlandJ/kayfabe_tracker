@@ -19,7 +19,7 @@ function App () {
     initializing
       ? <FullPageSpinner />
       : <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen dark:bg-black">
           <Switch>
             <GuestRoute exact path="/" component={PromotionsHome} title="promotions-home" />
             <GuestRoute path="/register" component={Register} title="register" />
