@@ -33,18 +33,12 @@ function PromotionWrestlers () {
 
   const wrestlerList = wrestlers.map((wrestler) => (
     <tr className="border-b border-gray-200 hover:bg-gray-100" key={wrestler.id}>
-      <td className="py-3 text-left whitespace-nowrap hidden md:block">
-        <div className="rounded-full bg-green-50 w-10 h-10 flex items-center justify-center">
-          {getInitials(wrestler.ring_name)}
-        </div>
-
-        <div className="group w-full h-full rounded-full overflow-hidden shadow-inner text-center bg-purple table cursor-pointer">
-          <span className="hidden group-hover:table-cell text-white font-bold align-middle">KR</span>
-        </div>
-      </td>
       <td className="text-left whitespace-nowrap">
         <div className="flex items-center">
-          <div className="ml-2">
+          <div className="ml-2 text-lg">
+            <span className="rounded-full bg-green-50 w-10 h-10 p-2 items-center justify-center mr-2">
+              {getInitials(wrestler.ring_name)}
+            </span>
             {wrestler.ring_name}
           </div>
         </div>
@@ -81,7 +75,6 @@ function PromotionWrestlers () {
         <table className="w-5/6 mx-4 my-4 table-auto">
           <thead>
             <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-              <th className="py-3 px-2 text-left hidden md:block" />
               <th className="py-3 px-2 text-left">Wrestler</th>
               <th className="py-3 px-2 text-center">Status</th>
               <th className="py-3 px-2 text-center" />
