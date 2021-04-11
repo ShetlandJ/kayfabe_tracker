@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import { getPromotionWrestlers } from '../api/promotions';
+import { getBackgroundColour, getTextColour } from '../utils/wrestler-state';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 function PromotionWrestlers () {
@@ -49,7 +50,17 @@ function PromotionWrestlers () {
         </div>
       </td>
       <td className="py-3 px-2 text-center">
-        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Active</span>
+        {wrestler.states.length > 0 && (
+          <span
+            className="py-1 px-3 rounded-full text-xs"
+            style={{
+              backgroundColor: getBackgroundColour(wrestler.states[0]),
+              color: getTextColour(wrestler.states[0])
+            }}
+          >
+            {wrestler.states[0].name}
+          </span>
+        )}
       </td>
       <td className="py-3 px-2 text-center">
         <div className="flex item-center justify-center">
