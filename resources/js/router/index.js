@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PromotionsHome from '../pages/promotions-home';
 import PromotionWrestlers from '../pages/promotion-wrestlers';
+import WrestlerHistory from '../pages/wrestler-history';
 import Login from '../pages/auth/login';
 import Register from '../pages/auth/register';
 import ForgotPassword from '../pages/auth/forgot-password';
@@ -23,6 +24,7 @@ function App () {
         <div className="flex flex-col min-h-screen dark:bg-black">
           <Switch>
             <GuestRoute exact path="/" component={PromotionsHome} title="promotions-home" />
+            <GuestRoute path="/promotion/:alias/:slug" component={WrestlerHistory} title="wrestler-history" />
             <GuestRoute exact path="/promotion/:alias" component={PromotionWrestlers} title="promotion-wrestlers" />
             <GuestRoute path="/register" component={Register} title="register" />
             <GuestRoute path="/login" component={Login} title="login"/>

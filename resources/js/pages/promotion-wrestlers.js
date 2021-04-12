@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import { getPromotionWrestlers } from '../api/promotions';
 import { getBackgroundColour, getTextColour } from '../utils/wrestler-state';
+import { getInitials } from '../utils/wrestlers';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 function PromotionWrestlers () {
@@ -19,17 +20,6 @@ function PromotionWrestlers () {
       })
       .catch(error => console.log(error));
   }, []);
-
-  const getInitials = (fullName) => {
-    const allNames = fullName.trim().split(' ');
-    const initials = allNames.reduce((acc, curr, index) => {
-      if (index === 0 || index === allNames.length - 1) {
-        acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-      }
-      return acc;
-    }, ['']);
-    return initials;
-  };
 
   const wrestlerList = wrestlers.map((wrestler) => (
     <tr className="border-b border-gray-200 hover:bg-gray-100" key={wrestler.id}>
@@ -60,8 +50,8 @@ function PromotionWrestlers () {
       </td>
       <td className="py-3 px-2 text-center">
         <button className="p-2 my-2 bg-gray-500 text-white rounded-md">
-          <Link to={`/promotion/${alias}`}>
-            <span className="flex">View <span className="ml-1 hidden md:block">Wrestlers</span></span>
+          <Link to={`/promotion/${alias}/${wrestler.slug}`}>
+            <span className="flex">View <span className="ml-1 hidden md:block">History</span></span>
           </Link>
         </button>
 
@@ -75,7 +65,7 @@ function PromotionWrestlers () {
       <Navbar />
 
       <div className="flex justify-center">
-        <table className="w-5/6 mx-4 my-4 table-auto">
+        <table className="w-11/12 mx-4 my-4 table-auto">
           <thead>
             <tr className="bg-gray-200 text-gray-600 dark:bg-gray-800 dark:text-gray-200 uppercase text-sm leading-normal">
               <th className="py-3 px-2 text-left">Wrestler</th>

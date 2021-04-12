@@ -14,6 +14,7 @@ class WrestlerFullResource extends BaseResource
             'middle_names' => $wrestler->middle_names,
             'surname' => $wrestler->surname,
             'ring_name' => $wrestler->ring_name,
+            'biography' => $wrestler->biography,
             'slug' => $wrestler->slug,
             'active' => $wrestler->active,
             'date_of_birth' => $wrestler->date_of_birth,

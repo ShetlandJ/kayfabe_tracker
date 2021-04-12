@@ -32,6 +32,7 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::namespace('Promotions')->prefix('promotions')->group(function () {
             Route::get('/', 'IndexController')->name('promotions.index');
             Route::get('/{alias}/wrestlers', 'PromotionWrestlersController')->name('promotions.wrestlers.index');
+            Route::get('/{alias}/{slug}', 'PromotionWrestlerController')->name('promotions.wrestlers.index');
 
         });
     });
