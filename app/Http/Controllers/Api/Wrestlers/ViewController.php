@@ -12,6 +12,6 @@ class ViewController extends WrestlersController
 
         $payload = WrestlerFullResource::create($wrestler);
 
-        return $this->toJson(["data" => $payload]);
+        return $this->toJson(['data' => $payload]);
     }
 }

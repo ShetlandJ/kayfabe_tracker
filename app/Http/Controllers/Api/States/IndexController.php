@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\States;
 
 use App\Http\Resources\StateResource;
-use App\Http\Resources\WrestlerResource;
 
 class IndexController extends StatesController
 {
@@ -17,6 +16,6 @@ class IndexController extends StatesController
             $payload[] = StateResource::create($state);
         }
 
-        return $this->toJson(["data" => $payload]);
+        return $this->toJson(['data' => $payload]);
     }
 }

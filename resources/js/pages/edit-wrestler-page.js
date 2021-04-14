@@ -10,20 +10,24 @@ function PromotionWrestlers () {
   const [wrestler, setWrestler] = useState([]);
   const slug = useRouteMatch().params.slug;
 
-  useEffect(() => {
+  const getWrestlerHistory = () => {
     getAllWrestlerHistory(slug)
       .then(({ data }) => {
         setWrestler(data);
         setLoading(false);
       })
       .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    getWrestlerHistory();
   }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
       <div>
         {!loading && (
-          <EditWrestler wrestler={wrestler} />
+          <EditWrestler wrestler={wrestler} getWrestlerHistory={getWrestlerHistory} />
         )}
       </div>
     </div>

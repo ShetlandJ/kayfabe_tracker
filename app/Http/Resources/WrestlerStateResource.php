@@ -19,14 +19,12 @@ class WrestlerStateResource extends BaseResource
             'state_id' => null,
             'name' => null,
             'colour' => null,
-
         ];
 
         if ($state) {
-            $payload['state_id'] =$wrestlerToState->state->uuid;
+            $payload['state_id'] = $wrestlerToState->state->uuid;
             $payload['name'] = $wrestlerToState->state->name;
             $payload['colour'] = $wrestlerToState->state->colour;
-
         }
 
         return $payload;

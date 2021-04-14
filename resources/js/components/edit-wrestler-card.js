@@ -3,22 +3,32 @@ import PropTypes from 'prop-types';
 import { getInitials } from '../utils/wrestlers';
 import EditStateCard from './edit-state-card';
 import { getAllStates } from '../api/states';
+import { deleteState } from '../api/wrestlers';
 import { useRouteMatch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import WrestlerStatesList from './wrestler-states-list';
 
-function EditWrestlerCard ({ wrestler }) {
+function EditWrestlerCard ({ wrestler, getWrestlerHistory }) {
   const [creating, setCreating] = useState(false);
   const [loading, setLoading] = useState(true);
   const [states, setStates] = useState([]);
-  const slug = useRouteMatch().params.slug;
-
-  const emptyState = {
+  const [editState, setEditState] = useState(null);
+  const [emptyState, setEmptyState] = useState({
     title: '',
     description: '',
-    sttus: null,
+    status: null,
+    start: new Date()
+  });
+
+  const defaultEmptyState = {
+    title: '',
+    description: '',
+    status: null,
     start: new Date()
   };
+
+  const slug = useRouteMatch().params.slug;
 
   useEffect(() => {
     getAllStates(slug)
@@ -28,6 +38,21 @@ function EditWrestlerCard ({ wrestler }) {
       })
       .catch(error => console.log(error));
   }, []);
+
+  const removeState = (state) => {
+    deleteState(state.id);
+    getWrestlerHistory();
+  };
+
+  const editStateTrigger = (stateData) => {
+    setEditState(stateData);
+  };
+
+  const reset = () => {
+    setCreating(false);
+    setEditState(null);
+    setEmptyState(defaultEmptyState);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -49,32 +74,34 @@ function EditWrestlerCard ({ wrestler }) {
       </div>
 
       <div className="mt-3 p-3 w-11/12">
-        {wrestler.states.length > 0 && wrestler.states.map(state => (
-          <div className="rounded-lg mb-2" key={state.id}>
-            <EditStateCard state={state} states={states} wrestler={wrestler} setCreating={setCreating} />
-          </div>
-        ))}
+        <WrestlerStatesList
+          states={wrestler.states}
+          editState={editStateTrigger}
+          deleteState={removeState}
+        />
 
-        {!creating && (
-          <button
-            className="flex m-auto items-center justify-center bg-green-200 w-2/3 h-64"
-            onClick={() => setCreating(true)}
-          >
-            <FontAwesomeIcon icon={faPlus} size="8x" />
-          </button>
-        )}
-
-        {creating && (
-          <div className="rounded-lg mb-2">
+        <div className="rounded-lg mb-2">
+          {!editState && (
             <EditStateCard
               state={emptyState}
               states={states}
               wrestler={wrestler}
-              setCreating={setCreating}
+              reset={reset}
               creating={true}
             />
-          </div>
-        )}
+          )}
+
+          {!creating && editState && (
+            <EditStateCard
+              key={JSON.stringify(editState)}
+              state={editState}
+              states={states}
+              wrestler={wrestler}
+              reset={reset}
+            />
+          )}
+
+        </div>
       </div>
     </div>
   );

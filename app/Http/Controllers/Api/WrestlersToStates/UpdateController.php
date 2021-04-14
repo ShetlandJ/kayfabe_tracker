@@ -19,6 +19,6 @@ class UpdateController extends WrestlersToStateController
 
         $this->wtsService->updateWrestlerState($content, $wrestlersToState);
 
-        return $this->toJson(["data" => null]);
+        return $this->toJson(['data' => null]);
     }
 }

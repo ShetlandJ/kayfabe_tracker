@@ -16,6 +16,6 @@ class IndexController extends WrestlersController
             $payload[] = WrestlerResource::create($wrestler);
         }
 
-        return $this->toJson(["data" => $payload]);
+        return $this->toJson(['data' => $payload]);
     }
 }

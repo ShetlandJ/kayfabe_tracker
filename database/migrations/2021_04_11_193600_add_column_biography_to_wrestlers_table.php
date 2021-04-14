@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class AddColumnBiographyToWrestlersTable extends Migration
 {
     const TABLE = 'wrestlers';
+
     public function up()
     {
         Schema::table(self::TABLE, function (Blueprint $table) {

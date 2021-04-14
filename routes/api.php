@@ -36,11 +36,6 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::get('/slug/{slug}', 'ViewController')->name('wrestlers.view');
     });
 
-    Route::namespace('WrestlersToStates')->prefix('wrestlers-to-states')->group(function () {
-        Route::post('/{wrestlerId}', 'CreateController')->name('wrestlers-to-states.create');
-        Route::patch('/{wrestlerId}', 'UpdateController')->name('wrestlers-to-states.update');
-    });
-
     Route::namespace('States')->prefix('states')->group(function () {
         Route::get('/', 'IndexController')->name('states.index');
     });
@@ -51,5 +46,12 @@ Route::name('api.')->namespace('Api')->group(function () {
             Route::get('me', 'MeController@me')->name('me');
             Route::post('logout', 'LogoutController@logout')->name('logout');
         });
+
+        Route::namespace('WrestlersToStates')->prefix('wrestlers-to-states')->group(function () {
+            Route::post('/{wrestlerId}', 'CreateController')->name('wrestlers-to-states.create');
+            Route::patch('/{wrestlerId}', 'UpdateController')->name('wrestlers-to-states.update');
+            Route::delete('/{stateId}', 'DeleteController')->name('wrestlers-to-states.delete');
+        });
+
     });
 });

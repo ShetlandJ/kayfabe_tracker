@@ -21,6 +21,11 @@ export const createWrestlerState = (wrestlerId, body) => {
 };
 
 export const updateWrestlerState = (wrestlerId, body) => {
-  return client(`/api/wrestlers-to-states/${wrestlerId}`, { methods: 'PATCH', body })
+  return client(`/api/wrestlers-to-states/${wrestlerId}`, { method: 'PATCH', body })
+    .then(data => data);
+};
+
+export const deleteState = (stateId) => {
+  return client(`/api/wrestlers-to-states/${stateId}`, { method: 'DELETE' })
     .then(data => data);
 };

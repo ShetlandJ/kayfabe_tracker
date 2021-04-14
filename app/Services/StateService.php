@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Models\State;
-use App\Models\Wrestler;
-use App\Models\Promotion;
 
 class StateService
 {

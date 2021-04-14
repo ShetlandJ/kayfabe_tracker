@@ -6,7 +6,7 @@ import { createWrestlerState, updateWrestlerState } from '../api/wrestlers';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-function EditStateCard ({ state, states, wrestler, setCreating, creating = false }) {
+function EditStateCard ({ state, states, wrestler, reset, creating = false }) {
   const [title, setTitle] = useState(state.title);
   const [description, setDescription] = useState(state.description);
   const [status, setStatus] = useState(state.state_id);
@@ -28,7 +28,7 @@ function EditStateCard ({ state, states, wrestler, setCreating, creating = false
       await updateWrestlerState(wrestler.id, payload);
     }
 
-    setCreating(false);
+    reset();
   };
 
   const buttonText = creating ? 'Create' : 'Update';
@@ -90,6 +90,12 @@ function EditStateCard ({ state, states, wrestler, setCreating, creating = false
           <button onClick={updateWrestler} className="flex justify-center m-auto w-full p-2 my-2 bg-gray-500 text-white rounded-md">
             <div>
               {buttonText}
+            </div>
+          </button>
+
+          <button onClick={reset} className="flex justify-center m-auto w-full p-2 my-2 bg-gray-500 text-white rounded-md">
+            <div>
+              Cancel
             </div>
           </button>
         </div>

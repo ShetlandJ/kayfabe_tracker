@@ -18,6 +18,6 @@ class CreateController extends WrestlersToStateController
 
         $this->wtsService->createWrestlerState($content);
 
-        return $this->toJson(["data" => null]);
+        return $this->toJson(['data' => null]);
     }
 }

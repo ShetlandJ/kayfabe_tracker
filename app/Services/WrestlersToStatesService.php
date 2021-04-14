@@ -2,10 +2,8 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
-use App\Models\Wrestler;
-use App\Models\Promotion;
 use App\Models\WrestlersToStates;
+use Exception;
 use Ramsey\Uuid\Uuid;
 
 class WrestlersToStatesService
@@ -42,6 +40,19 @@ class WrestlersToStatesService
         $wts->save();
 
         return $wts;
+    }
+
+    public function delete(WrestlersToStates $wts): bool
+    {
+        try {
+            $wts->delete();
+            return true;
+        } catch (Exception $e) {
+            throw $e;
+            return false;
+        }
+
+        return false;
     }
 
     protected function formatDate($string, $format = 'Y-m-d\TH:i:s.u')

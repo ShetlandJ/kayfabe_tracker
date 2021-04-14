@@ -11,7 +11,7 @@ class StateResource extends BaseResource
         $payload = [
             'id' => $state->uuid,
             'name' => $state->name,
-            'colour' => $state->colour
+            'colour' => $state->colour,
         ];
 
         return $payload;
