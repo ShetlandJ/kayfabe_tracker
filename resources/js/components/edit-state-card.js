@@ -1,42 +1,40 @@
 import React, { useState } from 'react';
 import { getBackgroundColour } from '../utils/wrestler-state';
 import format from 'date-fns/format';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import DatePicker from 'react-date-picker';
 
-function EditStateCard ({state}) {
+function EditStateCard ({ state }) {
   const [title, setTitle] = useState(state.title);
   const [description, setDescription] = useState(state.description);
-  const [startDate, setStartDate] = useState(state.start);
+  const [startDate, setStartDate] = useState(new Date(state.start));
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4">
-      <div
-        className="col-span-2 sm:col-span-1 xl:col-span-1 h-full w-4"
-        style={{
-          backgroundColor: getBackgroundColour(state)
-        }}
-      />
-
-      <div className="col-span-2 sm:col-span-8 xl:col-span-8 p-2">
-        <div>
-          <label className="mr-2">
-            Title:
+    <div className="bg-blue-100 lg:w-10/12 md:10/12 w-10/12 m-auto my-10 shadow-md">
+      <div className="py-2 px-2 rounded-xl">
+        <form action="" className="mt-6">
+          <div className="my-5 text-sm">
+            <label htmlFor="username" className="block text-black">Title</label>
             <input
-              name="fname"
               type="text"
+              autoFocus
+              id="username"
+              className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
               value={title}
-              // onChange={this.onInputchange}
+              onChange={event => setTitle(event.target.value)}
             />
-          </label>
-        </div>
-        {/* <h2 className="font-semibold text-2xl">{state.title}</h2> */}
-        {/* <p> */}
-        {/* {state.description} */}
-        {/* </p> */}
-      </div>
-      <div className="col-span-2 sm:col-span-1 xl:col-span-1 p-2">
-        {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} /> */}
+
+            <label htmlFor="username" className="block text-black mt-2">Description</label>
+            <textarea
+              type="text"
+              autoFocus
+              id="username"
+              className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+              value={description}
+              onChange={event => setDescription(event.target.value)}
+              rows="3"
+            />
+          </div>
+        </form>
       </div>
     </div>
 

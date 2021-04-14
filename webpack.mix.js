@@ -17,6 +17,10 @@ mix.react('resources/js/app.js', 'public/js')
       port: 7000
     }
   })
+  // .postCss('resources/sass/app.scss', 'public/css', [
+  //   require('tailwindcss'),
+  //   require('autoprefixer')
+  // ])
   .webpackConfig({
     externals: [
       'child_process'
