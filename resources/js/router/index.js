@@ -14,6 +14,7 @@ import AuthRoute from './auth-route';
 import GuestRoute from './guest-route';
 import { useAuth } from '../context/auth';
 import FullPageSpinner from '../components/full-page-spinner';
+import EditWrestlerPage from '../pages/edit-wrestler-page';
 
 function App () {
   let { initializing } = useAuth();
@@ -30,7 +31,9 @@ function App () {
             <GuestRoute path="/login" component={Login} title="login"/>
             <GuestRoute path="/forgot-password" component={ForgotPassword} title="forgot password"/>
             <GuestRoute path="/password/reset/:token" component={ResetPassword} title="reset password"/>
-            <AuthRoute path="/home" component={Home} title="home"/>
+            <AuthRoute path="/admin/wrestler/:slug" component={EditWrestlerPage} title="edit-wrestler"/>
+            <AuthRoute path="/admin" component={Home} title="admin"/>
+
             <AuthRoute path="/profile/:id" component={Profile} title="profile"/>
             <Route component={NotFound}/>
           </Switch>

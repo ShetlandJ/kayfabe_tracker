@@ -10,6 +10,8 @@ class ViewController extends WrestlersController
     {
         $wrestler = $this->wrestlerService->getBySlug($slug);
 
-        return $this->toJson(WrestlerFullResource::create($wrestler));
+        $payload = WrestlerFullResource::create($wrestler);
+
+        return $this->toJson(["data" => $payload]);
     }
 }

@@ -43,7 +43,11 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/react-fontawesome": "^0.1.14",
+        "autoprefixer": "^10.2.5",
         "date-fns": "^2.20.3",
-        "laravel-mix-tailwind": "^0.1.0"
+        "laravel-mix-tailwind": "^0.1.0",
+        "postcss": "^8.2.10",
+        "postcss-loader": "^3.0.0",
+        "react-day-picker": "^7.4.10"
     }
 }

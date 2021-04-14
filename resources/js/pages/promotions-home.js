@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import GuestN/av from '../components/guest-nav';
 import Navbar from '../components/navbar';
 import PromotionCard from '../components/promotion-card';
 import { getPromotions } from '../api/promotions';

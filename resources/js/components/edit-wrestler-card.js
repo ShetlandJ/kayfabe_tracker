@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getInitials } from '../utils/wrestlers';
-import StateCard from './state-card';
+import EditStateCard from './edit-state-card';
 
-function WrestlerProfileCard ({ wrestler }) {
+function EditWrestlerCard ({ wrestler }) {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex items-center justify-between mt-4 w-2/3 bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
@@ -30,7 +30,7 @@ function WrestlerProfileCard ({ wrestler }) {
 
         {wrestler.states.length > 0 && wrestler.states.map(state => (
           <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-lg mb-2" key={state.id}>
-            <StateCard state={state} />
+            <EditStateCard state={state} />
           </div>
         ))}
 
@@ -39,8 +39,8 @@ function WrestlerProfileCard ({ wrestler }) {
   );
 }
 
-WrestlerProfileCard.propTypes = {
+EditWrestlerCard.propTypes = {
   wrestler: PropTypes.object.required
 };
 
-export default WrestlerProfileCard;
+export default EditWrestlerCard;

@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
-import { getWrestlerHistoryForPromotion } from '../api/wrestlers';
+import { getAllWrestlerHistory } from '../api/wrestlers';
 import { useRouteMatch } from 'react-router-dom';
-import WrestlerProfileCard from '../components/wrestler-card';
+import EditWrestler from '../components/edit-wrestler-card';
 
 function PromotionWrestlers () {
   const [loading, setLoading] = useState(true);
   const [promotion, setPromotion] = useState([]);
   const [wrestler, setWrestler] = useState([]);
-  const alias = useRouteMatch().params.alias;
   const slug = useRouteMatch().params.slug;
 
   useEffect(() => {
-    getWrestlerHistoryForPromotion(alias, slug)
-      .then(({ promotion, wrestler }) => {
-        setPromotion(promotion);
-        setWrestler(wrestler);
+    getAllWrestlerHistory(slug)
+      .then(({ data }) => {
+        setWrestler(data);
         setLoading(false);
       })
       .catch(error => console.log(error));
@@ -23,11 +21,9 @@ function PromotionWrestlers () {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-
       <div>
         {!loading && (
-          <WrestlerProfileCard wrestler={wrestler} />
+          <EditWrestler wrestler={wrestler} />
         )}
       </div>
     </div>

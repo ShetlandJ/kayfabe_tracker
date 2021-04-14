@@ -25,7 +25,7 @@ function AuthNav () {
           <ul className="list-reset flex items-center">
             <li>
               <NavLink
-                to="/home"
+                to="/"
                 activeClassName="font-bold"
                 className="text-gray-800 no-underline text-indigo">Kayfabe Tracker
               </NavLink>
@@ -55,38 +55,9 @@ function AuthNav () {
               onClick={closeMobileNav}
               className="px-4 py-3 lg:py-0">
               <NavLink
-                to='/home'
+                to='/admin'
                 className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-gray-700 underline lg:no-underline">
                   Home
-              </NavLink>
-            </li>
-            <li
-              onClick={closeMobileNav}
-              className="px-4 py-3 lg:py-0">
-              <NavLink
-                to='/home'
-                className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-gray-700 underline lg:no-underline">
-                  Messages
-              </NavLink>
-            </li>
-
-            <li
-              onClick={closeMobileNav}
-              className="px-4 py-3 lg:py-0">
-              <NavLink
-                to='/home'
-                className="capitalize text-2xl font-bold lg:text-sm lg:font-light text-gray-700 underline lg:no-underline">
-                  Notifications
-              </NavLink>
-            </li>
-
-            <li
-              onClick={closeMobileNav}
-              className="px-4 py-3 lg:py-0">
-              <NavLink
-                to={`/profile/${currentUser.id}`}
-                className="text-2xl font-bold lg:text-sm lg:font-light capitalize text-sm text-gray-700 underline lg:no-underline">
-                {currentUser.name}
               </NavLink>
             </li>
             <li
