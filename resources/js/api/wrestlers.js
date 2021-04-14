@@ -14,3 +14,13 @@ export const getAllWrestlerHistory = (slug) => {
   return client(`/api/wrestlers/slug/${slug}`)
     .then(data => data);
 };
+
+export const createWrestlerState = (wrestlerId, body) => {
+  return client(`/api/wrestlers-to-states/${wrestlerId}`, { body })
+    .then(data => data);
+};
+
+export const updateWrestlerState = (wrestlerId, body) => {
+  return client(`/api/wrestlers-to-states/${wrestlerId}`, { methods: 'PATCH', body })
+    .then(data => data);
+};

@@ -48,6 +48,7 @@
         "postcss": "^8.2.10",
         "postcss-loader": "^3.0.0",
         "react-date-picker": "^8.1.1",
+        "react-datepicker": "^3.7.0",
         "react-day-picker": "^7.4.10",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0"
     }

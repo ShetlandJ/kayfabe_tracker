@@ -36,6 +36,15 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::get('/slug/{slug}', 'ViewController')->name('wrestlers.view');
     });
 
+    Route::namespace('WrestlersToStates')->prefix('wrestlers-to-states')->group(function () {
+        Route::post('/{wrestlerId}', 'CreateController')->name('wrestlers-to-states.create');
+        Route::patch('/{wrestlerId}', 'UpdateController')->name('wrestlers-to-states.update');
+    });
+
+    Route::namespace('States')->prefix('states')->group(function () {
+        Route::get('/', 'IndexController')->name('states.index');
+    });
+
     // Protected routes
     Route::middleware('auth:api')->group(function () {
         Route::namespace('Auth')->group(function () {
