@@ -43,6 +43,7 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/react-fontawesome": "^0.1.14",
+        "date-fns": "^2.20.3",
         "laravel-mix-tailwind": "^0.1.0"
     }
 }

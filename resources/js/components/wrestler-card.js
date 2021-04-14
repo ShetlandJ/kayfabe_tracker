@@ -25,11 +25,16 @@ function WrestlerProfileCard ({ wrestler }) {
 
       </div>
 
-      <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-lg mt-3 p-3">
+      <div className="mt-3 p-3 w-2/3">
 
         <p className="text-4xl mb-2 text-center">History</p>
 
-        <StateCard />
+        {wrestler.states.length > 0 && wrestler.states.map(state => (
+          <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-lg mb-2" key={state.id}>
+            <StateCard state={state} />
+          </div>
+        ))}
+
       </div>
     </div>
   );

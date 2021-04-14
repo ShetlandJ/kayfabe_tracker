@@ -22,7 +22,7 @@ function PromotionWrestlers () {
   }, []);
 
   const wrestlerList = wrestlers.map((wrestler) => (
-    <tr className="border-b border-gray-200 hover:bg-gray-100" key={wrestler.id}>
+    <tr className="border-b border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" key={wrestler.id}>
       <td className="text-left whitespace-nowrap">
         <div className="flex items-center">
           <div className="ml-2 text-lg">
