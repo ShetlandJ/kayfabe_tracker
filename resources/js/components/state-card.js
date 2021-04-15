@@ -1,16 +1,19 @@
 import React from 'react';
 import { getBackgroundColour } from '../utils/wrestler-state';
 import format from 'date-fns/format';
+import ReactTooltip from 'react-tooltip';
 
 function StateCard ({state}) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4">
       <div
+        data-tip={state.name}
         className="col-span-2 sm:col-span-1 xl:col-span-1 h-full w-4"
         style={{
           backgroundColor: getBackgroundColour(state)
         }}
       >
+        <ReactTooltip place="top" type="dark" effect="float"/>
 
       </div>
       <div className="col-span-2 sm:col-span-8 xl:col-span-8 p-2">
