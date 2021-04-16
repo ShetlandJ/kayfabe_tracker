@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Services\WrestlersToStatesService;
 use Illuminate\Database\Eloquent\Model;
 
 class WrestlerFullResource extends BaseResource
@@ -19,12 +20,15 @@ class WrestlerFullResource extends BaseResource
             'active' => $wrestler->active,
             'date_of_birth' => $wrestler->date_of_birth,
             'date_of_death' => $wrestler->date_of_death,
+            'breakdown' => [],
         ];
 
         if ($wrestler->states) {
             foreach ($wrestler->states as $state) {
                 $payload['states'][] = WrestlerStateResource::create($state);
             }
+
+            $payload['breakdown'] = app(WrestlersToStatesService::class)->getBreakdown($wrestler->states);
         }
 
         return $payload;

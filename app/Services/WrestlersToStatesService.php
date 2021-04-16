@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\WrestlersToStates;
 use Exception;
+use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
+use App\Models\WrestlersToStates;
+use Illuminate\Database\Eloquent\Collection;
 
 class WrestlersToStatesService
 {
@@ -42,6 +44,39 @@ class WrestlersToStatesService
         return $wts;
     }
 
+    public function getBreakdown(Collection $wrestlerStates): array
+    {
+        $payload = [];
+
+        $totalDays = 0;
+        $firstStateEvent = Carbon::parse($wrestlerStates->first()->start);
+        $now = Carbon::now();
+        $totalDays = $firstStateEvent->diffInDays($now);
+
+        for ($i = 0; $i < $wrestlerStates->count(); $i++) {
+            $currentState = $wrestlerStates[$i];
+            $nextState = isset($wrestlerStates[$i + 1]) ? $wrestlerStates[$i + 1] : null;
+
+            $start = Carbon::parse($currentState->start);
+            $end = Carbon::now();
+
+            if ($nextState) {
+                $end = Carbon::parse($nextState->start);
+            }
+
+            $days = $start->diffInDays($end);
+
+            $payload[] = [
+                "days" => $days,
+                "percent" => $this->percent($days, $totalDays),
+                "colour" => $currentState->state->colour,
+                "type" => $currentState->state->name,
+            ];
+        }
+
+        return $payload;
+    }
+
     public function delete(WrestlersToStates $wts): bool
     {
         try {
@@ -62,5 +97,10 @@ class WrestlersToStatesService
         }
 
         return date($format, strtotime($string));
+    }
+
+    private function percent(int $dividend, int $divisor)
+    {
+        return $divisor ? (float) round(($dividend / $divisor) * 100, 1) : null;
     }
 }

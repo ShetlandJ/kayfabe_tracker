@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useAuth } from '../context/auth';
-import { Link } from 'react-router-dom';
-import { allWrestlers } from '../api/wrestlers';
 
 function WrestlerStatesList ({states, editState, deleteState}) {
-  let { currentUser } = useAuth();
-
   const rows = states.map(state => (
     <tr key={state.id}>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-4/5">

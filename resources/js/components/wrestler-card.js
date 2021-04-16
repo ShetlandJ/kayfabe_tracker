@@ -26,7 +26,22 @@ function WrestlerProfileCard ({ wrestler }) {
 
       <div className="mt-3 p-3 w-2/3">
 
-        <p className="text-4xl mb-2 text-center">History</p>
+        <p className="text-4xl mb-2 text-center dark:text-gray-200">History</p>
+        <div className="relative pt-1">
+          <div className="overflow-hidden h-4 mb-4 text-xs flex rounded bg-lightBlue-200">
+            {wrestler.breakdown && wrestler.breakdown.map((data, index) => (
+              <div
+                key={data.index}
+                style={{
+                  width: `${data.percent}%`,
+                  backgroundColor: data.colour
+                }}
+                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center"
+              />
+
+            ))}
+          </div>
+        </div>
 
         {wrestler.states.length > 0 && wrestler.states.map(state => (
           <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 rounded-lg mb-2" key={state.id}>
