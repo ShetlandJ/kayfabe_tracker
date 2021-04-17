@@ -113,4 +113,13 @@ class WrestlerService
 
         return $wtp;
     }
+
+    public function delete(Wrestler $wrestler): bool
+    {
+        $wrestler->promotions()->delete();
+        $wrestler->states()->delete();
+        $wrestler->delete();
+
+        return true;
+    }
 }

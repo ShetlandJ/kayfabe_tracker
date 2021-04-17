@@ -25,6 +25,11 @@ export const updateWrestlerState = (wrestlerId, body) => {
     .then(data => data);
 };
 
+export const deleteWrestler = (wrestlerId) => {
+  return client(`/api/wrestlers/${wrestlerId}`, { method: 'DELETE' })
+    .then(data => data);
+};
+
 export const deleteState = (stateId) => {
   return client(`/api/wrestlers-to-states/${stateId}`, { method: 'DELETE' })
     .then(data => data);

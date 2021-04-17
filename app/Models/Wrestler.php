@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\WrestlersToPromotions;
 use Illuminate\Database\Eloquent\Model;
 
 class Wrestler extends Model
@@ -11,6 +12,11 @@ class Wrestler extends Model
     public function states()
     {
         return $this->hasMany(WrestlersToStates::class, 'wrestler_id')->orderBy('start');
+    }
+
+    public function promotions()
+    {
+        return $this->hasMany(WrestlersToPromotions::class, 'wrestler_id');
     }
 
     public function getMostRecentStateAttribute()

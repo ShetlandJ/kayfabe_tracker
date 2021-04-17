@@ -32,7 +32,6 @@ Route::name('api.')->namespace('Api')->group(function () {
     });
 
     Route::namespace('Wrestlers')->prefix('wrestlers')->group(function () {
-        Route::post('/bulk-upload', 'BulkUploadController')->name('wrestlers.bulk-upload');
         Route::get('/', 'IndexController')->name('wrestlers.index');
         Route::get('/slug/{slug}', 'ViewController')->name('wrestlers.view');
     });
@@ -54,5 +53,9 @@ Route::name('api.')->namespace('Api')->group(function () {
             Route::delete('/{stateId}', 'DeleteController')->name('wrestlers-to-states.delete');
         });
 
+        Route::namespace('Wrestlers')->prefix('wrestlers')->group(function () {
+            Route::post('/bulk-upload', 'BulkUploadController')->name('wrestlers.bulk-upload');
+            Route::delete('/{wrestlerId}', 'DeleteController')->name('wrestlers.delete');
+        });
     });
 });

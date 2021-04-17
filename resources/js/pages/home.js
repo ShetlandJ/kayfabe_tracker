@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/auth';
 import { Link } from 'react-router-dom';
-import { allWrestlers } from '../api/wrestlers';
+import { allWrestlers, deleteWrestler } from '../api/wrestlers';
 
 function Home () {
   let { currentUser } = useAuth();
@@ -9,14 +9,23 @@ function Home () {
   const [wrestlers, setWrestlers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    allWrestlers()
+  const getAllWrestlers = () => {
+    return allWrestlers()
       .then(({ data }) => {
         setWrestlers(data);
         setLoading(false);
       })
       .catch(error => console.log(error));
+  };
+
+  useEffect(() => {
+    getAllWrestlers();
   }, []);
+
+  const removeWrestler = async (wrestlerId) => {
+    await deleteWrestler(wrestlerId);
+    getAllWrestlers();
+  };
 
   const rows = wrestlers.map(wrestler => (
     <tr key={wrestler.id}>
@@ -35,6 +44,14 @@ function Home () {
             Edit
           </Link>
         </button>
+
+        {/* <button
+          onClick={() => removeWrestler(wrestler.id)}
+          disabled
+          className="p-2 my-2 ml-2 bg-red-400 text-white rounded-md"
+        >
+            X
+        </button> */}
       </td>
     </tr>
   ));
