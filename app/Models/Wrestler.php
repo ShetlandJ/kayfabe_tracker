@@ -10,7 +10,7 @@ class Wrestler extends Model
 
     public function states()
     {
-        return $this->hasMany(WrestlersToStates::class, 'wrestler_id', 'id')->orderBy('start');;
+        return $this->hasMany(WrestlersToStates::class, 'wrestler_id')->orderBy('start');
     }
 
     public function getMostRecentStateAttribute()

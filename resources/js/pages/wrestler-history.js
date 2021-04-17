@@ -32,7 +32,7 @@ function PromotionWrestlers () {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <Breadcrumbs breadcrumbs={crumbs} />
+      <Breadcrumbs breadcrumbs={crumbs} />.
       <div>
         {!loading && (
           <WrestlerProfileCard wrestler={wrestler} />

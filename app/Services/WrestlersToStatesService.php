@@ -44,14 +44,34 @@ class WrestlersToStatesService
         return $wts;
     }
 
-    public function getBreakdown(Collection $wrestlerStates): array
+    public function getBreakdown(Collection $wrestlerStates, bool $excludeInactive = false): array
     {
         $payload = [];
 
+
         $totalDays = 0;
-        $firstStateEvent = Carbon::parse($wrestlerStates->first()->start);
-        $now = Carbon::now();
-        $totalDays = $firstStateEvent->diffInDays($now);
+        for ($i = 0; $i < $wrestlerStates->count(); $i++) {
+            $currentState = $wrestlerStates[$i];
+            $nextState = isset($wrestlerStates[$i + 1]) ? $wrestlerStates[$i + 1] : null;
+
+
+            if ($excludeInactive && 'Inactive' === $currentState->state->name) {
+                continue;
+            }
+
+            $start = Carbon::parse($currentState->start);
+            $end = Carbon::now();
+
+            if ($nextState) {
+                $end = Carbon::parse($nextState->start);
+            }
+
+            $totalDays = $start->diffInDays($end);
+        }
+
+        // $firstStateEvent = Carbon::parse($wrestlerStates->first()->start);
+        // $now = Carbon::now();
+        // $totalDays = $firstStateEvent->diffInDays($now);
 
         for ($i = 0; $i < $wrestlerStates->count(); $i++) {
             $currentState = $wrestlerStates[$i];
@@ -65,6 +85,10 @@ class WrestlersToStatesService
             }
 
             $days = $start->diffInDays($end);
+
+            if ($excludeInactive && 'Inactive' === $currentState->state->name) {
+                continue;
+            }
 
             $payload[] = [
                 "days" => $days,

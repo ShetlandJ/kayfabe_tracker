@@ -41,9 +41,9 @@ function Home () {
 
   return (
     <div className="container p-2 mx-auto flex flex-col">
-      <div>
-        Add/Edit Wrestlers
-      </div>
+      <button className="p-2 my-2 bg-gray-500 text-white rounded-md">
+        <Link to="/admin/add-wrestler">+ Add Wrestler</Link>
+      </button>
 
       <table className="min-w-full leading-normal">
         <thead>

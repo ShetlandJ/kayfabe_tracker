@@ -30,13 +30,16 @@ function EditWrestlerCard ({ wrestler, getWrestlerHistory }) {
 
   const slug = useRouteMatch().params.slug;
 
-  useEffect(() => {
-    getAllStates(slug)
+  const getStates = () => {
+    return getAllStates(slug)
       .then(({ data }) => {
         setStates(data);
         setLoading(false);
       })
       .catch(error => console.log(error));
+  };
+  useEffect(() => {
+    getStates();
   }, []);
 
   const removeState = (state) => {
@@ -49,6 +52,7 @@ function EditWrestlerCard ({ wrestler, getWrestlerHistory }) {
   };
 
   const reset = () => {
+    getWrestlerHistory();
     setCreating(false);
     setEditState(null);
     setEmptyState(defaultEmptyState);
@@ -75,6 +79,7 @@ function EditWrestlerCard ({ wrestler, getWrestlerHistory }) {
 
       <div className="mt-3 p-3 w-11/12">
         <WrestlerStatesList
+          key={wrestler.states.length}
           states={wrestler.states}
           editState={editStateTrigger}
           deleteState={removeState}

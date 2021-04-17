@@ -32,6 +32,7 @@ Route::name('api.')->namespace('Api')->group(function () {
     });
 
     Route::namespace('Wrestlers')->prefix('wrestlers')->group(function () {
+        Route::post('/bulk-upload', 'BulkUploadController')->name('wrestlers.bulk-upload');
         Route::get('/', 'IndexController')->name('wrestlers.index');
         Route::get('/slug/{slug}', 'ViewController')->name('wrestlers.view');
     });

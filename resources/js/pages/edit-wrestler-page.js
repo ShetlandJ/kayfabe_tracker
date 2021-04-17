@@ -24,7 +24,7 @@ function PromotionWrestlers () {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-11/12">
       <div>
         {!loading && (
           <EditWrestler wrestler={wrestler} getWrestlerHistory={getWrestlerHistory} />
