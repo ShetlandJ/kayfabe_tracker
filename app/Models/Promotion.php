@@ -21,6 +21,6 @@ class Promotion extends Model
             'id',
             'id',
             'wrestler_id'
-        );
+        )->orderBy('ring_name');
     }
 }

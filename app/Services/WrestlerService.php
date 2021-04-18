@@ -12,7 +12,9 @@ class WrestlerService
 {
     public function getAllWrestlers()
     {
-        return Wrestler::all();
+        $wrestlers = Wrestler::all();
+
+        return $wrestlers->sortBy('ring_name');
     }
 
     public function getByUuid(string $uuid): Wrestler
